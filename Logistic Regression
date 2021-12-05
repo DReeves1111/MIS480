@@ -1,0 +1,6 @@
+proc logistic data=work.import desc plots=(oddsratio(cldisplay=serifarrow) roc);
+class gender senior partner dependents phone_service multiple_lines online_security device_protection tech_support streaming_tv streaming_movies paperless_billing;
+model churn = gender senior partner dependents phone_service multiple_lines online_security device_protection tech_support streaming_tv streaming_movies paperless_billing tenure monthly_charges total_charges avg_monthly_charges;
+output out=outdata p=pred_prob lower=low upper=upp;
+
+run; 
